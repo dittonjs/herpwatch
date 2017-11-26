@@ -1,5 +1,3 @@
-import { setTimeout } from 'timers';
-
 const Gpio = require('onoff').Gpio;
 const pin2 = new Gpio(2, 'out');
 const pin3 = new Gpio(3, 'out');
