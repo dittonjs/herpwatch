@@ -1,12 +1,12 @@
 const Gpio = require('onoff').Gpio;
-const pin2 = new Gpio(2, 'out');
-const pin3 = new Gpio(3, 'out');
-const pin4 = new Gpio(4, 'out');
-const pin17 = new Gpio(17, 'out');
-const pin27 = new Gpio(27, 'out');
-const pin22 = new Gpio(22, 'out');
-const pin10 = new Gpio(10, 'out');
-const pin9 = new Gpio(9, 'out');
+const pin2 = new Gpio(2, 'low');
+const pin3 = new Gpio(3, 'low');
+const pin4 = new Gpio(4, 'low');
+const pin17 = new Gpio(17, 'low');
+const pin27 = new Gpio(27, 'low');
+const pin22 = new Gpio(22, 'low');
+const pin10 = new Gpio(10, 'low');
+const pin9 = new Gpio(9, 'low');
 
 // setTimeout( () => pin2.writeSync(1) , 1000);
 // setTimeout( () => pin3.writeSync(1) , 2000);
