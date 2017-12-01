@@ -28,7 +28,7 @@ ds18b20.sensors(function(err, ids) {
 // const pin10 = new Gpio(10, 'out');
 // const pin9 = new Gpio(9, 'out');
 
-/
+
 // setTimeout( () => pin3.writeSync(1) , 2000);
 // setTimeout( () => pin4.writeSync(1) , 3000);
 // setTimeout( () => pin17.writeSync(1) , 4000);
