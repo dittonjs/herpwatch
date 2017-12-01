@@ -1,8 +1,8 @@
 const Gpio = require('onoff').Gpio;
-const pin2 = new Gpio(2, 'out');
+// const pin2 = new Gpio(2, 'out');
 // const pin3 = new Gpio(3, 'out');
 // const pin4 = new Gpio(4, 'out');
-// const pin17 = new Gpio(17, 'out');
+const pin17 = new Gpio(17, 'out');
 // const pin27 = new Gpio(27, 'out');
 // const pin22 = new Gpio(22, 'out');
 // const pin10 = new Gpio(10, 'out');
