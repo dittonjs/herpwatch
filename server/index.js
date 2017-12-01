@@ -2,13 +2,33 @@ const Gpio = require('onoff').Gpio;
 // const pin2 = new Gpio(2, 'out');
 // const pin3 = new Gpio(3, 'out');
 // const pin4 = new Gpio(4, 'out');
-const pin17 = new Gpio(17, 'out');
+
+let pin17 = new Gpio(17, 'out');
+pin17.writeSync(1);
+let on = false;
+
+var ds18b20 = require('ds18b20');
+
+ds18b20.sensors(function(err, ids) {
+  setInterval(() => {
+    ds18b20.temperature(ids[0], (err, value) => {
+      if (value > 29 && !on) {
+        on = true
+        pin17.writeSync(0);
+      } else if(on) {
+        on = false;
+        pin17.writeSync(1);
+      }
+      console.log(`temp is ${value}C`);
+    })
+  }, 1000)
+});
 // const pin27 = new Gpio(27, 'out');
 // const pin22 = new Gpio(22, 'out');
 // const pin10 = new Gpio(10, 'out');
 // const pin9 = new Gpio(9, 'out');
 
-// setTimeout( () => pin2.writeSync(1) , 1000);
+/
 // setTimeout( () => pin3.writeSync(1) , 2000);
 // setTimeout( () => pin4.writeSync(1) , 3000);
 // setTimeout( () => pin17.writeSync(1) , 4000);

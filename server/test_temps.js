@@ -4,7 +4,7 @@ ds18b20.sensors(function(err, ids) {
   setInterval(() => {
     ds18b20.temperature(ids[0], (err, value) => {
 
-      console.log(`temp is ${value}C`, console.log(typeof value));
+      console.log(`temp is ${value}C`);
     })
   }, 1000)
 });
