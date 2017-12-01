@@ -15,7 +15,7 @@ ds18b20.sensors(function(err, ids) {
       if (value > 29 && !on) {
         on = true
         pin17.writeSync(0);
-      } else if(on) {
+      } else if(value <= 29 && on) {
         on = false;
         pin17.writeSync(1);
       }
