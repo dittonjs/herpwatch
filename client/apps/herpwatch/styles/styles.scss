@@ -1,0 +1,172 @@
+@import "defines";
+@import "modules/mixins";
+
+body {
+  font-family: 'robotoregular';
+}
+
+.c-main{
+  margin-top: 50px;
+  position: relative;
+}
+
+  .c-main__contain{
+    // max-width: 90rem;
+    padding: 0 1rem;
+    position: relative;
+  }
+
+.c-row{
+  @include display-flex;
+  @include align-items(center);
+  flex-wrap: wrap;
+  margin-left: -1.5rem;
+}
+
+.c-column{
+  padding: 0 1.5rem 2rem;
+}
+
+.main-header {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: $grey;
+  color: white;
+  button {
+    margin-right: 50px;
+    float: right;
+  }
+}
+
+.icon-button {
+  font-size: 1rem;
+}
+
+.c-tile-view{
+  padding-top: 1rem;
+}
+
+.c-row{
+  @include display-flex;
+  @include align-items(center);
+  flex-wrap: wrap;
+  margin-left: -1.5rem;
+}
+
+.c-tile{
+  padding-left: 1.5rem;
+  padding-bottom: 1.5rem;
+  width: 15%;
+  min-width: 15rem;
+  max-width: 30rem;
+
+  &:focus{
+    outline: none;
+    .c-tile-item{
+      outline: thin dotted $gray10;
+      box-shadow: 0 0 0.8rem rgba(0,0,0,0.15);
+      .c-btn--more-tile{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.c-tile-item{
+  background: $white;
+  border: $border2;
+  height: 12rem;
+  cursor: default;
+
+  &:hover{
+    box-shadow: 0 0 0.8rem rgba(0,0,0,0.15);
+    .c-btn--more-tile{
+      opacity: 1;
+    }
+  }
+  &.is-active{
+    background: $blue;
+    .c-tile-item__bottom{
+      color: $white;
+    }
+    .c-btn--more-tile{
+      opacity: 1;
+    }
+  }
+}
+
+  .c-tile-item__top{
+    height: 7rem;
+    background: $gray1;
+    border-bottom: $border2;
+    position: relative;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    & > i{
+      font-size: 4.5rem;
+      line-height: 6.8rem;
+      color: $alt-text;
+    }
+  }
+
+  .c-tile-item__bottom{
+    height: 5rem;
+    @include semi-bold;
+    color: $text;
+    font-size: 1.3rem;
+    padding: 0 1rem;
+    @include display-flex;
+    @include align-items(center);
+  }
+
+  .c-tile-item__drop {
+    @include semi-bold;
+    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
+    @include center(vertical);
+    color: $alt-text;
+  }
+
+  .c-icon--tile{
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    button{
+      background: $white;
+    }
+  }
+
+  .j-modal {
+    padding: 10px;
+    position: fixed;
+    top: 100px;
+    bottom: 100px;
+    left: 20%;
+    right: 20%;
+    background: #fff;
+    border-radius: 2px;
+    z-index: 9999;
+    min-width: 400px;
+    .bottom {
+      position: absolute;
+      bottom: 0px;
+    }
+  }
+
+  .overlay {
+    background: rgba(0,0,0,0.15);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 9998;
+  }

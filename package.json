@@ -33,7 +33,9 @@
     "react"
   ],
   "dependencies": {
+    "body-parser": "^1.18.2",
     "del": "^3.0.0",
+    "express": "^4.16.2",
     "mongodb": "^2.2.33"
   }
 }
