@@ -5,7 +5,7 @@ export default class Header extends React.Component {
     return (
       <div className="main-header">
         Reptiles
-        <button className="icon-button">
+        <button className="icon-button" onClick={() => this.props.openNewReptile(true)}>
           <i className="fa fa-plus" aria-hidden="true" />
         </button>
         <div style={{ clear: 'both' }} />

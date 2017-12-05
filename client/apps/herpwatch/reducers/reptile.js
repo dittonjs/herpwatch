@@ -1,45 +1,23 @@
+import _ from 'lodash';
+import { Constants } from '../actions/reptile';
+
 const initialState = {
-  reptiles: [{
-    _id: 1,
-    name: 'Carmen',
-    birthday: '',
-    age: 2,
-    weightsIds: [],
-    feedingsIds: [],
-    shedsIds: [],
-    regularFeedingDay: 'Thurs',
-    regularFood: '100g Rat',
-    genesIds: [],
-    speciesId: null,
-    img: '',
-    sex: 'F',
-    breeder: true,
-    forSale: false,
-    price: null,
-    type: 'snake'
-  }],
-  species: [{
-    _id: 1,
-    name: 'Ball Python',
-    scientificName: 'Python regius',
-    dayTempRange: {
-      low: 88,
-      high: 92
-    },
-    nightTempRange: {
-      low: 82,
-      high: 85,
-    },
-    humidityRange: {
-      low: 50,
-      high: 80,
-    },
-    maxLength: 5,
-  }]
+  reptiles: [],
+  species: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case Constants.GET_REPTILES_DONE:
+      return { ...state, reptiles: action.payload.reptiles };
+    case Constants.GET_SPECIES_DONE:
+      return { ...state, species: action.payload.species };
+    case Constants.CREATE_REPTILE_DONE: {
+      const newState = _.cloneDeep(state);
+      newState.reptiles.push(action.payload.reptile);
+      debugger
+      return newState;
+    }
     default:
       return state;
   }

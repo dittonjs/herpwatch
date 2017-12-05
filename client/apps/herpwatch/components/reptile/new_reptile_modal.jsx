@@ -1,6 +1,13 @@
 import React from 'react';
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { createReptile } from '../../actions/reptile';
 
+const select = ({ reptile }) => ({
+  species: reptile.species
+});
+
+@connect(select, { createReptile })
 export default class NewReptileModal extends React.Component {
 
   get speciesOptions() {
@@ -11,7 +18,6 @@ export default class NewReptileModal extends React.Component {
 
   handleSubmit(e) {
     const reptile = {
-      _id: 1,
       name: e.target.name.value,
       birthday: null,
       age: parseInt(e.target.age.value, 10),
@@ -21,21 +27,24 @@ export default class NewReptileModal extends React.Component {
       genesIds: [],
       regularFeedingDay: null,
       regularFood: null,
-      speciesId: null,
+      speciesId: parseInt(e.target.species.value, 10),
       img: null,
       sex: e.target.gender.value,
       breeder: e.target.breeder.checked,
       forSale: false,
       price: null
     };
+    this.props.createReptile(reptile);
+    this.props.openNewReptile(false);
   }
 
   render() {
+    if (!this.props.open) return null;
     return (
       <div>
         <div className="j-modal">
           <div className="main-body">
-            <form onSubmit={(e) => this.handleSubmit(e)}>
+            <form onSubmit={e => this.handleSubmit(e)}>
               <div className="form-group">
                 <label htmlFor="name">Reptile Name</label>
                 <input
@@ -78,7 +87,7 @@ export default class NewReptileModal extends React.Component {
             {/* <button>Save</button> */}
           </div>
         </div>
-        <div className="overlay" />
+        <div onClick={() => this.props.openNewReptile(false)}className="overlay" />
       </div>
     );
   }

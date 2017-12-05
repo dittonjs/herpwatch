@@ -4,14 +4,22 @@ import { connect } from 'react-redux';
 import Header from './common/header';
 import Reptile from './reptile/_reptile';
 import NewReptileModal from './reptile/new_reptile_modal';
+import { getReptiles, getSpecies } from '../actions/reptile';
 
 const select = ({ reptile }) => ({
   reptiles: reptile.reptiles,
-  species: reptile.species
 });
 
-@connect(select)
+@connect(select, { getReptiles, getSpecies })
 export default class Reptiles extends React.Component {
+  state = {
+    newReptileOpen: false,
+  }
+
+  componentWillMount() {
+    this.props.getReptiles();
+    this.props.getSpecies();
+  }
 
   get reptiles() {
     return _.map(this.props.reptiles, reptile => (
@@ -19,11 +27,18 @@ export default class Reptiles extends React.Component {
     ));
   }
 
+  openNewReptile(newReptileOpen) {
+    this.setState({ newReptileOpen });
+  }
+
   render() {
     return (
       <div>
-        <Header />
-        <NewReptileModal species={this.props.species} />
+        <Header openNewReptile={e => this.openNewReptile(e)} />
+        <NewReptileModal
+          openNewReptile={e => this.openNewReptile(e)}
+          open={this.state.newReptileOpen}
+        />
         <div className="c-main">
           <div className="c-main__contain">
             <div className="c-tile-view">
