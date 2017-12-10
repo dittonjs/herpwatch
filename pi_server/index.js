@@ -12,10 +12,10 @@ var ds18b20 = require('ds18b20');
 ds18b20.sensors(function(err, ids) {
   setInterval(() => {
     ds18b20.temperature(ids[0], (err, value) => {
-      if (value > 29 && !on) {
+      if (value < 30.5 && !on) {
         on = true
         pin17.writeSync(0);
-      } else if(value <= 29 && on) {
+      } else if(value >= 31.6 && on) {
         on = false;
         pin17.writeSync(1);
       }
