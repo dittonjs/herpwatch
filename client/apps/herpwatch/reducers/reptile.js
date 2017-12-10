@@ -15,7 +15,6 @@ export default (state = initialState, action) => {
     case Constants.CREATE_REPTILE_DONE: {
       const newState = _.cloneDeep(state);
       newState.reptiles.push(action.payload.reptile);
-      debugger
       return newState;
     }
     default:
