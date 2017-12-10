@@ -21,7 +21,7 @@ io.on('connection', function(socket){
       });
     }, 1000)
     socket.on('disconnect', function(){
-      clearInterval(inVal);
+      clearInterval(intVal);
     });
   });
 
